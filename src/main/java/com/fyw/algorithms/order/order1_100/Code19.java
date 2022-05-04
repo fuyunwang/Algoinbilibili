@@ -1,6 +1,7 @@
 package com.fyw.algorithms.order.order1_100;
 
-import com.gopher.leetcode.types.structure.linkedlist.ListNode;
+
+import com.fyw.algorithms.ListNode;
 
 /**
  * @Title Code19
