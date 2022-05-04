@@ -7,4 +7,5 @@ package com.fyw.algorithms.hot100;
  * @Description:
  */
 public class Code19 {
+
 }
