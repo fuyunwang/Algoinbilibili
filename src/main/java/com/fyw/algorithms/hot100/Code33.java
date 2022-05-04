@@ -8,9 +8,10 @@ package com.fyw.algorithms.hot100;
  */
 public class Code33 {
     public int search(int[] nums, int target) {
+        if (nums==null||nums.length==0)
+            return -1;
         int n=nums.length;
-        int l=0;
-        int r=n-1;
+        int l=0,r=n-1;
         while (l<r){
             int mid=l+r+1>>1;
             if (nums[mid]>=nums[0]){
@@ -22,36 +23,22 @@ public class Code33 {
         if (nums[l]==target){
             return l;
         }
-        // 在左半部分查找
-        int temp=l;
-        l=0;
-        r=r-1;
+        if (nums[0]>target){
+            l=l+1;
+            r=n-1;
+        }else{
+            l=0;
+        }
         while (l<r){
-            int mid=l+r+1>>1;
-            if (nums[mid]<=target){
-                l=mid;
+            int mid=l+r>>1;
+            if (nums[mid]>=target){
+                r=mid;
             }else{
-                r=mid-1;
+                l=mid+1;
             }
         }
-        if (nums[l]==target){
-            return l;
-        }
-        // 在右半部分查找
-        l=temp+1;
-        r=n-1;
-        while (l<r){
-            int mid=l+r+1>>1;
-            if (nums[mid]<=target){
-                l=mid;
-            }else{
-                r=mid-1;
-            }
-        }
-        if (nums[l]==target){
-            return l;
-        }
+        if (nums[r]==target)
+            return r;
         return -1;
     }
-
 }
