@@ -1,4 +1,4 @@
-package com.fyw.algorithms.order;
+package com.fyw.algorithms.order.order1_100;
 
 /**
  * @Title Code7
