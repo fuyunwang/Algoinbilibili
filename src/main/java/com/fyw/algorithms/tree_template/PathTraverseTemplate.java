@@ -92,23 +92,7 @@ public class PathTraverseTemplate {
             }
         }
         static class Code671{
-            long min=Long.MAX_VALUE,less=min;
-            public int findSecondMinimumValue(TreeNode root) {
-                dfs(root);
-                return less==Long.MAX_VALUE?-1: (int) less;
-            }
-            void dfs(TreeNode root){
-                if (root==null)
-                    return;
-                if (min<root.val){
-                    less=min;
-                    min=root.val;
-                }else if (root.val<less&&root.val>min){
-                    less=root.val;
-                }
-                dfs(root.left);
-                dfs(root.right);
-            }
+           
         }
     }
 
