@@ -11,7 +11,7 @@ public class ValReturnTemplate {
 
     }
     static class Code437{
-        
+
     }
     static class Code543{
 
@@ -23,6 +23,9 @@ public class ValReturnTemplate {
 
     static class Code124{
 
+    }
+    static class Code404{
+        
     }
     static class Code938{
 

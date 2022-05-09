@@ -44,9 +44,7 @@ public class PathTraverseTemplate {
     static class Code971{
 
     }
-    static class Code404{
 
-    }
     static class Code513{
 
     }
