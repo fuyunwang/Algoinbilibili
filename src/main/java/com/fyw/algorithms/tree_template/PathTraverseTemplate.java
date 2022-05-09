@@ -66,9 +66,7 @@ public class PathTraverseTemplate {
 
 
     // 双重递归
-    static class Code508{
 
-    }
     static class Code863{
 
     }
