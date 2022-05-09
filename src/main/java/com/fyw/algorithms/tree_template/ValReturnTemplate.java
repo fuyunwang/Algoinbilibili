@@ -25,7 +25,7 @@ public class ValReturnTemplate {
 
     }
     static class Code404{
-        
+
     }
     static class Code938{
 

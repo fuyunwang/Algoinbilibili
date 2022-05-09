@@ -45,14 +45,16 @@ public class PathTraverseTemplate {
 
     }
 
-    static class Code513{
+    static class Code199_513_872{
+        static class Code513{
 
-    }
-    static class Code199{
+        }
+        static class Code199{
 
-    }
-    static class Code872{
+        }
+        static class Code872{
 
+        }
     }
 
     static class Code979{
