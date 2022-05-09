@@ -32,7 +32,7 @@ public class PathTraverseTemplate {
 
 
     // 含叶子结点
-    static class Code112_113_437{
+    static class Code112_113{
 
     }
     static class Code257{
