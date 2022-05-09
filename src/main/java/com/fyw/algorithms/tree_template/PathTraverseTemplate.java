@@ -12,7 +12,7 @@ public class PathTraverseTemplate {
     }
 
 
-    // PCA、子树，此类问题采用后序遍历
+    // LCA、子树，此类问题采用后序遍历
     static class Code235_236{
 
     }
