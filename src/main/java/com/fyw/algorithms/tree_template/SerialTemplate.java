@@ -1,5 +1,10 @@
 package com.fyw.algorithms.tree_template;
 
+import com.fyw.algorithms.TreeNode;
+
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @Title SerialTemplate
  * @Author fyw
@@ -18,10 +23,8 @@ public class SerialTemplate {
     }
 
     static class Code606{
-        // 类似括号生成
-    }
-    static class Code988{
-        // 类似括号生成
+        // 类似括号生成，也类似257、988
+
     }
 
     static class Code297{
@@ -29,10 +32,6 @@ public class SerialTemplate {
     }
 
     static class Code449{
-
-    }
-
-    static class Code331{
 
     }
 

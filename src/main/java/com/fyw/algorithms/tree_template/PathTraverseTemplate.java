@@ -292,10 +292,14 @@ public class PathTraverseTemplate {
     static class Code988{
 
     }
-    static class Code971{
+    static class Code971{   // 类似814题、331题、二叉树和二叉搜索树的序列化与反序列化
+
+    }
+    static class Code331{
 
     }
 
+    // 覆盖思想
     static class Code199_513_872{
         static class Code513{
 
@@ -308,6 +312,7 @@ public class PathTraverseTemplate {
         }
     }
 
+    // 返回二维结果
     static class Code979{
         // 类似993
     }
@@ -316,9 +321,8 @@ public class PathTraverseTemplate {
     }
 
 
-    // 双重递归
+    // 双重递归，实现所有节点结果情况的考虑，类似572
     static class Code863{
 
     }
-
 }
