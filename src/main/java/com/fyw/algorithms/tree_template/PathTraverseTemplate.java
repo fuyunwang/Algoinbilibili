@@ -1,11 +1,9 @@
 package com.fyw.algorithms.tree_template;
 
 import com.fyw.algorithms.TreeNode;
+import sun.reflect.generics.tree.Tree;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @Title PathTraverseTemplate
@@ -284,33 +282,172 @@ public class PathTraverseTemplate {
 
     // 含叶子结点
     static class Code112_113{
+        static class Code112{
+            public boolean hasPathSum(TreeNode root, int targetSum) {
+                if (root==null)
+                    return false;
+                targetSum-=root.val;
+                if (root.left==null&&root.right==null){
+                    if (targetSum==0)
+                        return true;
+                }else{
+                    return hasPathSum(root.left,targetSum)||hasPathSum(root.right,targetSum);
+                }
+                return false;
+            }
+        }
+        static class Code113{
+            List<List<Integer>> res=new LinkedList<>();
+            public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
+                backtrack(root,targetSum,new LinkedList<>());
+                return res;
+            }
+            void backtrack(TreeNode root,int targetSum,LinkedList<Integer> path){
+                if (root==null)
+                    return;
+                targetSum-=root.val;
+                path.addLast(root.val);
+                if (root.left==null&&root.right==null){
+                    if (targetSum==0){
+                        res.add(new LinkedList<>(path));
+                        return;
+                    }
+                }else{
+                    if (root.left!=null){
+                        backtrack(root.left,targetSum,path);
+                        path.removeLast();
+                    }
+                    if (root.right!=null){
+                        backtrack(root.right,targetSum,path);
+                        path.removeLast();
+                    }
+                }
+            }
+        }
 
     }
     static class Code257{
-
+        List<String> res=new LinkedList<>();
+        public List<String> binaryTreePaths(TreeNode root) {
+            backtrack(root,new StringBuilder());
+            return res;
+        }
+        void backtrack(TreeNode root,StringBuilder sb){
+            if (root==null){
+                return;
+            }
+            sb.append(root.val);
+            if (root.left==null&&root.right==null){
+                res.add(sb.toString());
+                return;
+            }
+            if (root.left!=null){
+                backtrack(root.left,new StringBuilder(sb).append("->"));
+            }
+            if (root.right!=null){
+                backtrack(root.right,new StringBuilder(sb).append("->"));
+            }
+            sb.deleteCharAt(sb.length()-1);
+        }
     }
     static class Code988{
+        String res;
+        public String smallestFromLeaf(TreeNode root) {
+            backtrack(root,new StringBuilder());
+            return res;
+        }
+        void backtrack(TreeNode root,StringBuilder sb){
+            if (root==null){
+                return;
+            }
+            sb.append((char) (root.val+'a'));
+            if (root.left==null&&root.right==null){
+                sb.reverse();
+                if (res==null||sb.toString().compareTo(res)<0){
+                    res=sb.toString();
+                }
+                sb.reverse();
+            }else{
+                backtrack(root.left,new StringBuilder(sb));
+                backtrack(root.right,new StringBuilder(sb));
+            }
+            sb.deleteCharAt(sb.length()-1);
+        }
+    }
+
+    static class Code872{
+
+        public boolean leafSimilar(TreeNode root1, TreeNode root2) {
+            List<Integer> res1=new ArrayList<>();
+            List<Integer> res2=new ArrayList<>();
+            dfs(root1,res1);
+            dfs(root2,res2);
+            return res1.equals(res2);
+        }
+        void dfs(TreeNode root,List<Integer> list){
+            if (root==null)
+                return;
+            if (root.left==null&&root.right==null){
+                list.add(root.val);
+                return;
+            }
+            dfs(root.left,list);
+            dfs(root.right,list);
+        }
+    }
+
+
+    // 覆盖思想
+    static class Code199_513{
+        static class Code199{
+            List<Integer> res=new ArrayList<>();
+            public List<Integer> rightSideView(TreeNode root) {
+                Map<Integer,Integer> map=new HashMap<>();
+                dfs(root,0,map);
+                for (Map.Entry<Integer,Integer> entry:map.entrySet()){
+                    res.add(entry.getValue());
+                }
+                return res;
+            }
+            void dfs(TreeNode root,int depth,Map<Integer,Integer> map){
+                if (root==null)
+                    return;
+                map.put(depth,root.val);
+                dfs(root.left,depth+1,map);
+                dfs(root.right,depth+1,map);
+            }
+        }
+
+        static class Code513{
+            int maxDepth=0;
+            TreeNode res=null;
+            public int findBottomLeftValue(TreeNode root) {
+                dfs(root,0);
+                return res.val;
+            }
+            void dfs(TreeNode root,int depth){
+                if (root==null)
+                    return;
+                if (maxDepth<depth){
+                    maxDepth=depth;
+                    res=root;
+                }
+                dfs(root.left,depth+1);
+                dfs(root.right,depth+1);
+            }
+        }
+    }
+
+    static class Code331{
 
     }
     static class Code971{   // 类似814题、331题、二叉树和二叉搜索树的序列化与反序列化
 
     }
-    static class Code331{
+    static class Code1028{
 
     }
 
-    // 覆盖思想
-    static class Code199_513_872{
-        static class Code513{
-
-        }
-        static class Code199{
-
-        }
-        static class Code872{
-
-        }
-    }
 
     // 返回二维结果
     static class Code979{
