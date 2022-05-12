@@ -15,13 +15,13 @@ public class SerialTemplate {
     static class Code105{
         Map<Integer,Integer> map=new HashMap<>();
         public TreeNode buildTree(int[] preorder, int[] inorder) {
-            for (int i = 0; i < inorder.length; i++) {
+            for (int i= 0;  i< inorder.length; i++) {
                 map.put(inorder[i],i);
             }
             return buildTree(preorder,inorder,0,preorder.length-1,0,inorder.length-1);
         }
-        TreeNode buildTree(int[] preorder,int[] inorder,int pl,int pr,int il,int ir){
-            if (pl>pr||il>ir){
+        public TreeNode buildTree(int[] preorder,int[] inorder,int pl,int pr,int il,int ir){
+            if (il>ir||pl>pr){
                 return null;
             }
             int rootVal=preorder[pl];
@@ -36,46 +36,45 @@ public class SerialTemplate {
     static class Code106{
         Map<Integer,Integer> map=new HashMap<>();
         public TreeNode buildTree(int[] inorder, int[] postorder) {
-            for (int i = 0; i <inorder.length ; i++) {
+            for (int i = 0; i < inorder.length; i++) {
                 map.put(inorder[i],i);
             }
             return dfs(inorder,postorder,0,inorder.length-1,0,postorder.length-1);
         }
         TreeNode dfs(int[] inorder,int[] postorder,int il,int ir,int pl,int pr){
-            if (pl>pr||il>ir){
+            if (il>ir||pl>pr)
                 return null;
-            }
             int rootVal=postorder[pr];
             TreeNode root=new TreeNode(rootVal);
             int idx=map.get(rootVal);
             int leftNum=idx-il;
             int rightNum=ir-idx;
             root.left=dfs(inorder,postorder,il,idx-1,pl,pl+leftNum-1);
-            root.right=dfs(inorder,postorder,idx+1,ir,pl+leftNum,pl+leftNum-1+rightNum);
+            root.right=dfs(inorder,postorder,idx+1,ir,pl+leftNum,pl+leftNum+rightNum-1);
             return root;
         }
     }
     static class Code889{
         Map<Integer,Integer> map=new HashMap<>();
         public TreeNode constructFromPrePost(int[] preorder, int[] postorder) {
-            for (int i=0;i<postorder.length;i++){
+            for (int i = 0; i < postorder.length; i++) {
                 map.put(postorder[i],i);
             }
             return buildTree(preorder,postorder,0,preorder.length-1,0,postorder.length-1);
         }
-        TreeNode buildTree(int[] preorder,int[] postorder,int el,int er,int tl,int tr){
-            if (el>er){
+        public TreeNode buildTree(int[] preorder,int[] postorder,int preL,int preR,int postL,int postR){
+            if (preL>preR){
                 return null;
             }
-            int rootVal=preorder[el];
+            int rootVal=preorder[preL];
             TreeNode root=new TreeNode(rootVal);
-            if (el==er){
+            if (preL==preR){
                 return root;
             }
-            int idx=map.get(preorder[el+1]);    // 在后序遍历中的索引位置
-            int leftNum=idx-tl;
-            root.left=buildTree(preorder,postorder,el+1,el+1+leftNum,tl,idx);
-            root.right=buildTree(preorder,postorder,el+leftNum+1+1,er,idx+1,tr-1);
+            int idx=map.get(preorder[preL+1]);
+            int num=idx-postL;
+            root.left=buildTree(preorder,postorder,preL+1,preL+1+num,postL,idx);
+            root.right=buildTree(preorder,postorder,preL+1+num+1,preR,idx+1,postR-1);
             return root;
         }
     }
