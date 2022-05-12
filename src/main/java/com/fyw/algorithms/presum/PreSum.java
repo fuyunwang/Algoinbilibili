@@ -33,6 +33,41 @@ public class PreSum {
             return false;
         }
     }
-    static class COde525{
+    static class Code525{
+    }
+    static class Code560{
+    }
+    static class Code724{
+    }
+    static class Code926{
+
+    }
+    static class Code930{
+    }
+    static class Code974{
+    }
+
+    static class Code1052{
+        public int maxSatisfied(int[] customers, int[] grumpy, int minutes) {
+            int sum=0;
+            for (int i = 0; i < customers.length; i++) {
+                if (grumpy[i]==0){
+                    sum+=customers[i];
+                    // 擦除策略
+                    customers[i]=0;
+                }
+            }
+            int res=sum;
+            for (int i = 0; i < customers.length; i++) {
+                if (i<minutes){
+                    sum+=customers[i];
+                }else{
+                    sum+=customers[i];
+                    sum-=customers[i-minutes];
+                }
+                res=Math.max(res,sum);
+            }
+            return res;
+        }
     }
 }
