@@ -101,18 +101,68 @@ public class ValReturnTemplate {
         }
     }
     static class Code1022{
-
+        public int sumRootToLeaf(TreeNode root) {
+            return dfs(root,0);
+        }
+        // 声明函数用于计算从根节点到叶的二进制数之和
+        int dfs(TreeNode root,int x){
+            if (root==null)
+                return 0;
+            int res=0;  // 记录二进制数之和
+            x=x*2+x;
+            if (root.left==null&&root.right==null){
+                res+=x;
+            }
+            res+=dfs(root.left,x);
+            res+=dfs(root.right,x);
+            return res;
+        }
     }
 
 
     static class Code404{
-
+        public int sumOfLeftLeaves(TreeNode root) {
+            return dfs(root);
+        }
+        int dfs(TreeNode root){
+            if (root==null)
+                return 0;
+            int res=0;  // 记录左叶子之和
+            if (root.left!=null&&root.left.right==null&&root.left.left==null){
+                // 此时是左叶子，纳入到最后的结果中
+                res+=root.left.val;
+            }
+            res+=dfs(root.left);
+            res+=dfs(root.right);
+            return res;
+        }
     }
     static class Code124{
 
     }
     static class Code437{
-
+        public int pathSum(TreeNode root, int targetSum) {
+            if (root==null){
+                return 0;
+            }
+            int res=dfs(root,targetSum);
+            res+=pathSum(root.left,targetSum);
+            res+=pathSum(root.right,targetSum);
+            return res;
+        }
+        int dfs(TreeNode root,int targetSum){  /// 返回以root为节点时，结果的情况
+            if (root==null){
+                return 0;
+            }
+            targetSum-=root.val;
+            int res=0;
+            if (targetSum==0){
+                res++;
+            }
+            res+=dfs(root.left,targetSum);
+            res+=dfs(root.right,targetSum);
+            return res;
+        }
     }
 
     static class Code687{
