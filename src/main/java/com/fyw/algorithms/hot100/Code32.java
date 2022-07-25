@@ -12,7 +12,6 @@ public class Code32 {
     public int longestValidParentheses(String s) {
         Stack<Integer> stack=new Stack<>();
         int res=0;
-
         for (int i = 0; i < s.length(); i++) {
             char c=s.charAt(i);
             if (stack.isEmpty()||c=='('){
